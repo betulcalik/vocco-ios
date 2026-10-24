@@ -147,7 +147,9 @@ private struct DottedO: View {
         Circle()
             .stroke(Brand.fg, style: StrokeStyle(lineWidth: 2.6, lineCap: .round, dash: [0.1, 5.2]))
             .frame(width: 14, height: 14)
-            .alignmentGuide(.firstTextBaseline) { dimensions in dimensions[.bottom] - 4 }
+            // Center the ring on the lowercase x-height middle (baseline − 6.25pt at 24pt type),
+            // so the dotted o's optically align with the V and cc.
+            .alignmentGuide(.firstTextBaseline) { dimensions in dimensions[.bottom] - 0.75 }
     }
 }
 
