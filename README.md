@@ -20,7 +20,8 @@ word by word. Built on ElevenLabs TTS + Scribe STT, with all scoring done
 
 1. **Hear it** — the phrase is spoken by an ElevenLabs voice (`eleven_flash_v2_5`),
    with a 🐢 slow / 🐇 normal toggle.
-2. **Say it** — record your take (max 12 s, auto-stop).
+2. **Say it** — record your take (max 12 s, auto-stop). Every phrase card shows
+   the 🇹🇷 Turkish translation right under the sentence.
 3. **Score it** — [Scribe](https://elevenlabs.io/speech-recognition) transcribes your take,
    and a local Needleman–Wunsch word alignment colors every word:
    🟢 nailed / 🟡 off. Play *mine* vs *ideal* side by side, retry, next.
@@ -34,7 +35,9 @@ the Saved list and jump straight back into it.
 
 - 🗂️ **8 decks · 80 phrases** — Travel, Business, Small Talk, IELTS hard words,
   Job Interview, Numbers & Prices, Doctor & Emergency, Tech & Remote Work
-  (each with IPA, translations and a stress-tip)
+  (each with IPA and a stress-tip)
+- 🇹🇷 **Turkish translations** — every phrase card shows the Turkish meaning
+  right under the sentence, so you always know *what* you're saying
 - 🎧 4 coach voices (ElevenLabs premade library — no extra charges)
 - 📈 Streaks, XP levels, weekly accuracy trend (Swift Charts), tricky-word mastery
 - 🔖 Saved phrases with instant resume ("Continue" card)
