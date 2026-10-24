@@ -6,20 +6,29 @@ struct PracticeHomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 22) {
-                    HStack {
+                VStack(spacing: 20) {
+                    HStack(spacing: 8) {
                         Wordmark()
                         Spacer()
+                        LevelPill(level: store.level)
                         StreakPill(count: store.streak)
                     }
                     TodayMixCard(deck: store.todayDeck,
                                  done: store.todayAttemptCount,
                                  goal: store.settings.dailyGoal)
+                    if let resumeDeck = store.lastPracticedDeck {
+                        ContinueCard(deck: resumeDeck,
+                                     startIndex: store.nextPhraseIndex(in: resumeDeck))
+                    }
+                    if !store.bookmarks.isEmpty {
+                        savedRow
+                    }
                     HStack {
                         SectionLabel("Decks")
                         Spacer()
+                        SectionLabel("\(store.masteredKeys.count) mastered")
                     }
-                    decksRow
+                    deckGrid
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 8)
@@ -30,17 +39,46 @@ struct PracticeHomeView: View {
         }
     }
 
-    private var decksRow: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 14) {
-                ForEach(Store.decks) { deck in
-                    NavigationLink(value: deck) {
-                        DeckCard(deck: deck, mastered: store.masteredCount(in: deck))
-                    }
-                    .buttonStyle(.plain)
-                }
+    // MARK: Saved phrases entry
+
+    private var savedRow: some View {
+        NavigationLink {
+            SavedPhrasesView()
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "bookmark.fill")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundStyle(Brand.coral)
+                Text("Saved phrases")
+                    .font(.vocco(15, .bold))
+                    .foregroundStyle(Brand.fg)
+                Spacer()
+                Text("\(store.bookmarks.count)")
+                    .font(.voccoMono(12))
+                    .foregroundStyle(Brand.muted)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(Brand.muted)
             }
-            .padding(.vertical, 4)
+            .padding(16)
+            .background(RoundedRectangle(cornerRadius: 22, style: .continuous).fill(Color.white))
+            .shadow(color: Brand.fg.opacity(0.07), radius: 12, y: 5)
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint("Open saved phrases")
+    }
+
+    // MARK: Deck grid
+
+    private var deckGrid: some View {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)],
+                  spacing: 12) {
+            ForEach(Store.decks) { deck in
+                NavigationLink(value: deck) {
+                    DeckCard(deck: deck, mastered: store.masteredCount(in: deck))
+                }
+                .buttonStyle(.plain)
+            }
         }
         .navigationDestination(for: Deck.self) { deck in
             PhrasePracticeView(deck: deck)
@@ -85,6 +123,43 @@ struct TodayMixCard: View {
     }
 }
 
+// MARK: - Continue card
+
+private struct ContinueCard: View {
+    let deck: Deck
+    let startIndex: Int
+
+    var body: some View {
+        NavigationLink {
+            PhrasePracticeView(deck: deck, startIndex: startIndex)
+        } label: {
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 5) {
+                    SectionLabel("Continue")
+                    HStack(spacing: 6) {
+                        Text(deck.emoji).font(.system(size: 17))
+                        Text(deck.title)
+                            .font(.vocco(16, .heavy))
+                            .foregroundStyle(Brand.fg)
+                    }
+                    Text("Phrase \(startIndex + 1) of \(deck.phrases.count)")
+                        .font(.voccoMono(11))
+                        .foregroundStyle(Brand.muted)
+                }
+                Spacer()
+                Image(systemName: "play.circle.fill")
+                    .font(.system(size: 30))
+                    .foregroundStyle(Brand.coral)
+            }
+            .padding(16)
+            .background(RoundedRectangle(cornerRadius: 22, style: .continuous).fill(Color.white))
+            .shadow(color: Brand.fg.opacity(0.07), radius: 12, y: 5)
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint("Continue \(deck.title)")
+    }
+}
+
 // MARK: - Deck card
 
 struct DeckCard: View {
@@ -96,13 +171,23 @@ struct DeckCard: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(deck.emoji).font(.system(size: 32))
+        VStack(alignment: .leading, spacing: 9) {
+            HStack {
+                Text(deck.emoji).font(.system(size: 28))
+                Spacer()
+                if ratio >= 1 {
+                    Image(systemName: "checkmark.seal.fill")
+                        .font(.system(size: 15))
+                        .foregroundStyle(Brand.teal)
+                }
+            }
             Text(deck.title)
-                .font(.vocco(19, .bold))
+                .font(.vocco(16, .bold))
                 .foregroundStyle(Brand.fg)
+                .lineLimit(2)
+                .multilineTextAlignment(.leading)
             Text("\(mastered) of \(deck.phrases.count) phrases")
-                .font(.voccoMono(11.5))
+                .font(.voccoMono(10.5))
                 .foregroundStyle(Brand.muted)
             GeometryReader { proxy in
                 ZStack(alignment: .leading) {
@@ -112,9 +197,9 @@ struct DeckCard: View {
             }
             .frame(height: 6)
         }
-        .padding(18)
-        .frame(width: 236, alignment: .leading)
-        .background(RoundedRectangle(cornerRadius: 24, style: .continuous).fill(Color.white))
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 22, style: .continuous).fill(Color.white))
         .shadow(color: Brand.fg.opacity(0.07), radius: 12, y: 5)
     }
 }

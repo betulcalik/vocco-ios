@@ -182,6 +182,25 @@ struct StreakPill: View {
     }
 }
 
+struct LevelPill: View {
+    let level: Int
+
+    var body: some View {
+        HStack(spacing: 5) {
+            Image(systemName: "star.fill")
+                .font(.system(size: 12, weight: .bold))
+                .foregroundStyle(Brand.coral)
+            Text("Lv \(level)")
+                .font(.vocco(13, .bold))
+                .foregroundStyle(Brand.fg)
+        }
+        .padding(.horizontal, 11)
+        .padding(.vertical, 8)
+        .background(Capsule().fill(Color.white))
+        .shadow(color: Brand.fg.opacity(0.08), radius: 8, y: 3)
+    }
+}
+
 // MARK: - Word chips
 
 struct WordChip: View {

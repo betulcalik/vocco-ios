@@ -4,3 +4,4 @@ DerivedData/
 .DS_Store
 build/
 Vocco/Secret.key
+compile_commands.json

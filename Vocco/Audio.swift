@@ -5,13 +5,16 @@ import Foundation
 
 enum VoccoError: LocalizedError {
     case noKey
+    case micDenied
     case api(String)
     case emptyTake
 
     var errorDescription: String? {
         switch self {
         case .noKey:
-            return "Add your ElevenLabs API key in Settings to score your speech."
+            return "ElevenLabs key not found on this device — reinstall the latest app build."
+        case .micDenied:
+            return "Microphone access is off — allow it in Settings → Vocco."
         case .api(let message):
             return message
         case .emptyTake:
@@ -39,6 +42,9 @@ final class VoiceRecorder {
     private var timer: Timer?
     private(set) var elapsed: TimeInterval = 0
 
+    /// Fired once when the 12 s cap is hit or the hardware stops on its own.
+    var onAutoFinish: (() -> Void)?
+
     var takeURL: URL? { recorder?.url }
     var isRecording: Bool { recorder?.isRecording ?? false }
 
@@ -52,24 +58,42 @@ final class VoiceRecorder {
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
         ]
-        recorder = try AVAudioRecorder(url: url, settings: settings)
-        recorder?.record(forDuration: 12)
+        let newRecorder = try AVAudioRecorder(url: url, settings: settings)
+        guard newRecorder.record(forDuration: 12) else {
+            print("[vocco] record() failed to start — mic permission or session issue")
+            throw VoccoError.micDenied
+        }
+        recorder = newRecorder
         elapsed = 0
+        print("[vocco] recording started")
+        timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 guard let self else { return }
                 self.elapsed = self.recorder?.currentTime ?? 0
+                let hardwareStopped = self.recorder != nil && self.recorder?.isRecording == false
+                if self.elapsed >= 11.9 || hardwareStopped {
+                    self.autoFinish()
+                }
             }
         }
     }
 
-    /// Stops and returns the take URL, or nil when nothing usable was recorded.
+    private func autoFinish() {
+        timer?.invalidate()
+        timer = nil
+        print("[vocco] auto finish at \(elapsed)s")
+        onAutoFinish?()
+    }
+
+    /// Stops and returns the take URL, or throws when nothing usable was recorded.
     func stop() throws -> URL {
         timer?.invalidate()
         timer = nil
         let duration = elapsed
         let url = recorder?.url
         recorder?.stop()
+        print("[vocco] stop: duration=\(String(format: "%.1f", duration))s")
         guard duration >= 0.4, let url, FileManager.default.fileExists(atPath: url.path) else {
             throw VoccoError.emptyTake
         }
@@ -139,7 +163,7 @@ struct ElevenLabs {
         return components.url!
     }
 
-    /// Ideal pronunciation audio (mp3 data). eleven_flash: cheapest per-character model.
+    /// Ideal pronunciation audio (mp3 data). Flash v2.5: cheapest per-character model.
     func tts(text: String, voiceId: String) async throws -> Data {
         var request = URLRequest(url: Self.ttsURL(voiceId: voiceId))
         request.httpMethod = "POST"
@@ -186,7 +210,9 @@ struct ElevenLabs {
         }
         struct ScribeResponse: Decodable { let text: String }
         do {
-            return try JSONDecoder().decode(ScribeResponse.self, from: data).text
+            let decoded = try JSONDecoder().decode(ScribeResponse.self, from: data)
+            print("[vocco] scribe heard: \(decoded.text)")
+            return decoded.text
         } catch {
             throw VoccoError.api("Speech-to-text returned an unexpected response.")
         }
@@ -195,7 +221,7 @@ struct ElevenLabs {
     private static func failureMessage(_ operation: String, data: Data, response: URLResponse) -> String {
         let status = (response as? HTTPURLResponse)?.statusCode ?? 0
         let detail = String(data: data.prefix(200), encoding: .utf8) ?? ""
-        if status == 401 { return "\(operation) failed — check your API key in Settings." }
+        if status == 401 { return "\(operation) failed — check your API key." }
         return "\(operation) failed (\(status)). \(detail)"
     }
 }

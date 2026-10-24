@@ -15,6 +15,7 @@ struct ProgressTabView: View {
                         Spacer()
                         StreakPill(count: store.streak)
                     }
+                    levelCard
                     streakCard
                     statsRow
                     accuracyCard
@@ -25,6 +26,36 @@ struct ProgressTabView: View {
             .background(Brand.bg.ignoresSafeArea())
             .toolbar(.hidden, for: .navigationBar)
         }
+    }
+
+    // MARK: Level
+
+    private var levelCard: some View {
+        HStack(spacing: 14) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Level \(store.level)")
+                    .font(.vocco(24, .heavy))
+                    .foregroundStyle(Brand.fg)
+                Text("\(store.xp) XP total")
+                    .font(.voccoMono(11))
+                    .foregroundStyle(Brand.fg.opacity(0.62))
+            }
+            Spacer()
+            VStack(alignment: .trailing, spacing: 7) {
+                GeometryReader { proxy in
+                    ZStack(alignment: .leading) {
+                        Capsule().fill(Brand.coral.opacity(0.15))
+                        Capsule().fill(Brand.coral)
+                            .frame(width: proxy.size.width * store.levelProgress)
+                    }
+                }
+                .frame(width: 110, height: 8)
+                Text("\(store.xpIntoLevel)/\(store.xpForNextLevel) XP · Lv \(store.level + 1)")
+                    .font(.voccoMono(10))
+                    .foregroundStyle(Brand.muted)
+            }
+        }
+        .vCard(fill: Brand.lilac)
     }
 
     // MARK: Streak calendar
@@ -143,13 +174,13 @@ struct ProgressTabView: View {
                 }
                 .chartYScale(domain: 0...100)
                 .chartYAxis {
-                    AxisMarks(values: [0, 50, 100]) { value in
+                    AxisMarks(values: [0, 50, 100]) { _ in
                         AxisGridLine().foregroundStyle(Brand.fg.opacity(0.06))
                         AxisValueLabel().font(.voccoMono(9)).foregroundStyle(Brand.muted)
                     }
                 }
                 .chartXAxis {
-                    AxisMarks(values: store.weeklyAccuracy.map(\.label)) { value in
+                    AxisMarks(values: store.weeklyAccuracy.map(\.label)) { _ in
                         AxisValueLabel().font(.voccoMono(9)).foregroundStyle(Brand.muted)
                     }
                 }

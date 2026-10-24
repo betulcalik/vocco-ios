@@ -66,5 +66,73 @@
       { "t": "They renovated the whole restaurant.", "ipa": "/ðeɪ ˈrɛnəveɪtɪd ðə hoʊl ˈrɛstrɑːnt/", "tr": "Restoranın tamamını yenilediler.", "tip": "RES-tuh-ront — three beats, first one strong." },
       { "t": "Wednesday is the sixth of November.", "ipa": "/ˈwɛnzdeɪ ɪz ðə sɪkst əv noʊˈvɛmbər/", "tr": "Çarşamba günü 6 Kasım.", "tip": "Wednesday hides its first D — WENZ-day." }
     ]
+  },
+  {
+    "id": "jobinterview",
+    "title": "Job Interview",
+    "emoji": "📝",
+    "phrases": [
+      { "t": "Thank you for having me today.", "ipa": "/θæŋk ju fər ˈhævɪŋ mi təˈdeɪ/", "tr": "Beni bugün ağırladığınız için teşekkürler.", "tip": "HAVing — the -ing never takes the stress." },
+      { "t": "My greatest strength is adaptability.", "ipa": "/maɪ ˈɡreɪtəst strɛŋθ ɪz əˌdæptəˈbɪləti/", "tr": "En büyük gücüm uyum yeteneğim.", "tip": "aDAPTability — DAPT is the drumbeat." },
+      { "t": "I have five years of experience in marketing.", "ipa": "/aɪ hæv faɪv jɪrz əv ɪkˈspɪriəns ɪn ˈmɑːrkɪtɪŋ/", "tr": "Pazarlama alanında beş yıllık deneyimim var.", "tip": "exPERience — three beats, second one lands." },
+      { "t": "I'm a quick learner and a team player.", "ipa": "/aɪm ə kwɪk ˈlɜːrnər ænd ə tim ˈpleɪər/", "tr": "Hızlı öğrenen ve takım oyuncusuyum.", "tip": "QUICK LEARNer — punch the first word, glide the rest." },
+      { "t": "Could you tell me more about the role?", "ipa": "/kʊd ju tɛl mi mɔr əˈbaʊt ðə roʊl/", "tr": "Pozisyon hakkında biraz daha bilgi verebilir misiniz?", "tip": "Could you → COULD-ya — link the words." },
+      { "t": "I'd love the chance to contribute.", "ipa": "/aɪd lʌv ðə tʃæns tu kənˈtrɪbjuːt/", "tr": "Katkı verme şansını çok isterim.", "tip": "conTRIbute — the TRI pops." },
+      { "t": "What does the day-to-day look like?", "ipa": "/wʌt dʌz ðə ˈdeɪtəˈdeɪ lʊk laɪk/", "tr": "Günlük iş akışı nasıl görünüyor?", "tip": "DAY-to-day — the outside beats are the strong ones." },
+      { "t": "I'm available to start immediately.", "ipa": "/aɪm əˈveɪləbəl tu stɑːrt ɪˈmiːdiətli/", "tr": "Derhal başlayabilirim.", "tip": "immeDIately — hold the middle beat." },
+      { "t": "That's a great question.", "ipa": "/ðæts ə ɡreɪt ˈkwɛstʃən/", "tr": "Bu çok iyi bir soru.", "tip": "GREAT — round the lips on the vowel." },
+      { "t": "I look forward to hearing from you.", "ipa": "/aɪ lʊk ˈfɔːrwərd tu ˈhɪrɪŋ frʌm ju/", "tr": "Dönüşünüzü dört gözle bekliyorum.", "tip": "forWARD — the second syllable falls away." }
+    ]
+  },
+  {
+    "id": "numbers",
+    "title": "Numbers & Prices",
+    "emoji": "🔢",
+    "phrases": [
+      { "t": "It costs twenty-three fifty.", "ipa": "/ɪt kɔsts ˈtwɛntiˌθri ˈfɪfti/", "tr": "Yirmi üç elli tutuyor.", "tip": "TWENty — bite the lower lip for the W." },
+      { "t": "Can I get a discount?", "ipa": "/kən aɪ ɡɛt ə ˈdɪskaʊnt/", "tr": "İndirim alabilir miyim?", "tip": "DIScount — first syllable wins." },
+      { "t": "The total comes to one hundred forty.", "ipa": "/ðə ˈtoʊtəl kʌmz tu wʌn ˈhʌndrərd ˈfɔːrti/", "tr": "Toplam yüz kırk ediyor.", "tip": "HUNDred — both D's stay soft and quick." },
+      { "t": "I'll pay in cash.", "ipa": "/aɪl peɪ ɪn kæʃ/", "tr": "Nakit ödeyeceğim.", "tip": "CASH — the A stretches wide." },
+      { "t": "Do you accept credit cards?", "ipa": "/du ju əkˈsɛpt ˈkrɛdɪt kɑːrdz/", "tr": "Kredi kartı kabul ediyor musunuz?", "tip": "acCEPT — stress the second beat." },
+      { "t": "It's half price today.", "ipa": "/ɪts hæf praɪs təˈdeɪ/", "tr": "Bugün yarı fiyat.", "tip": "HALF price — the L softens almost away." },
+      { "t": "My number is five five five, zero two one nine.", "ipa": "/maɪ ˈnʌmbər ɪz faɪv faɪv faɪv ˈzɪroʊ tu wʌn naɪn/", "tr": "Numaram beş beş beş, sıfır iki bir dokuz.", "tip": "ZERO — keep the Z buzzing, not an H." },
+      { "t": "The meeting is at nine thirty.", "ipa": "/ðə ˈmitɪŋ ɪz æt naɪn ˈθɜːrti/", "tr": "Toplantı dokuz otuzda.", "tip": "NINE THIRty — the TH stays airy." },
+      { "t": "I need two tickets, please.", "ipa": "/aɪ nid tu ˈtɪkɪts pliz/", "tr": "İki bilet istiyorum, lütfen.", "tip": "TICKets — the plural S hisses." },
+      { "t": "That's too expensive.", "ipa": "/ðæts tu ɪkˈspɛnsɪv/", "tr": "Bu çok pahalı.", "tip": "exPENsive — the middle syllable pays." }
+    ]
+  },
+  {
+    "id": "doctor",
+    "title": "Doctor & Emergency",
+    "emoji": "🏥",
+    "phrases": [
+      { "t": "I have a headache and a fever.", "ipa": "/aɪ hæv ə ˈhɛdeɪk ænd ə ˈfivər/", "tr": "Baş ağrım ve ateşim var.", "tip": "HEADache — first beat strongest." },
+      { "t": "I need to see a doctor.", "ipa": "/aɪ nid tu si ə ˈdɑːktər/", "tr": "Bir doktora görünmem gerekiyor.", "tip": "NEED to — reduce the second word to ta." },
+      { "t": "Where is the nearest pharmacy?", "ipa": "/wɛr ɪz ðə ˈnɪrəst ˈfɑːrməsi/", "tr": "En yakın eczane nerede?", "tip": "PHARmacy — the PH says F." },
+      { "t": "I'm allergic to penicillin.", "ipa": "/aɪm əˈlɜːrdʒɪk tu ˌpɛnɪˈsɪlɪn/", "tr": "Penisiline alerjim var.", "tip": "alLERgic — middle beat lands." },
+      { "t": "It hurts when I swallow.", "ipa": "/ɪt hɜrts wɛn aɪ ˈswɑːloʊ/", "tr": "Yutkunınca acıyor.", "tip": "HURTS — the final TS snaps." },
+      { "t": "Can you call an ambulance?", "ipa": "/kən ju kɔl ən ˈæmbjələns/", "tr": "Ambulans çağırabilir misiniz?", "tip": "AMbulance — three beats." },
+      { "t": "I've had this pain for three days.", "ipa": "/aɪv hæd ðɪs peɪn fər θri deɪz/", "tr": "Bu ağrı üç gündür var.", "tip": "PAIN — the diphthong glides down." },
+      { "t": "Do I need a prescription?", "ipa": "/du aɪ nid ə prɪˈskrɪpʃən/", "tr": "Reçete gerekiyor mu?", "tip": "preSCRIPtion — the SCR cluster rolls." },
+      { "t": "I feel dizzy.", "ipa": "/aɪ fil ˈdɪzi/", "tr": "Başım dönüyor.", "tip": "DIZzy — buzz the Z twice." },
+      { "t": "Is it serious?", "ipa": "/ɪz ɪt ˈsɪriəs/", "tr": "Ciddi bir şey mi?", "tip": "SErious — two light beats." }
+    ]
+  },
+  {
+    "id": "tech",
+    "title": "Tech & Remote Work",
+    "emoji": "💻",
+    "phrases": [
+      { "t": "Can you hear me now?", "ipa": "/kən ju hɪr mi naʊ/", "tr": "Beni şimdi duyuyor musunuz?", "tip": "NOW — let the vowel open wide." },
+      { "t": "You're on mute.", "ipa": "/jʊr ɑn mjut/", "tr": "Mikrofonun kapalı.", "tip": "You're ON mute — the middle word carries." },
+      { "t": "Let me share my screen.", "ipa": "/lɛt mi ʃɛr maɪ skrin/", "tr": "Ekranımı paylaşayım.", "tip": "SHARE — the SH spreads the lips." },
+      { "t": "I'll send you the link.", "ipa": "/aɪl sɛnd ju ðə lɪŋk/", "tr": "Linki sana göndereceğim.", "tip": "SEND you → SEN-cha — natural linking." },
+      { "t": "My internet keeps dropping.", "ipa": "/maɪ ˈɪntərnɛt kips ˈdrɑːpɪŋ/", "tr": "İnternetim sürekli kopuyor.", "tip": "KEEPS — hold the final S." },
+      { "t": "Let's take this offline.", "ipa": "/lɛts teɪk ðɪs ˌɔfˈlaɪn/", "tr": "Bunu görüşme dışında konuşalım.", "tip": "offLINE — the phrasal stress flips to the end." },
+      { "t": "Can everyone see the document?", "ipa": "/kən ˈɛvriwʌn si ðə ˈdɑːkjumənt/", "tr": "Herkes belgeyi görebiliyor mu?", "tip": "DOcument — first beat." },
+      { "t": "I have a hard stop at five.", "ipa": "/aɪ hæv ə hɑːrd stɑp æt faɪv/", "tr": "Beşte katılmam gereken bir şeyim var.", "tip": "HARD stop — both words punch." },
+      { "t": "Sorry, I was breaking up.", "ipa": "/ˈsɑːri aɪ wəz ˈbreɪkɪŋ ʌp/", "tr": "Özür dilerim, sesim kesiliyordu.", "tip": "BREAking — the long A glides." },
+      { "t": "Let's circle back after standup.", "ipa": "/lɛts ˈsɜːrkəl bæk ˈæftər ˈstændʌp/", "tr": "Standup sonrası geri dönelim.", "tip": "STANDup — compound stress up front." }
+    ]
   }
 ]

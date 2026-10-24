@@ -1,7 +1,13 @@
+import AVFAudio
 import SwiftUI
 
 struct PhrasePracticeView: View {
     let deck: Deck
+
+    init(deck: Deck, startIndex: Int = 0) {
+        self.deck = deck
+        _phraseIndex = State(initialValue: startIndex)
+    }
 
     @Environment(Store.self) private var store
     @Environment(\.dismiss) private var dismiss
@@ -42,7 +48,7 @@ struct PhrasePracticeView: View {
                         switch phase {
                         case .ready:
                             TipBanner(text: phrase.tip)
-                            MicButton(recording: false, elapsed: 0, action: startRecording)
+                            MicButton(recording: false, elapsed: 0, action: requestMicAndRecord)
                         case .recording:
                             MicButton(recording: true, elapsed: recorder.elapsed, action: finishRecording)
                         case .scoring:
@@ -72,12 +78,6 @@ struct PhrasePracticeView: View {
             Button("OK", role: .cancel) {}
         } message: {
             Text(alertMessage ?? "")
-        }
-        .onReceive(Timer.publish(every: 0.15, on: .main, in: .common).autoconnect()) { _ in
-            if phase == .recording,
-               recorder.elapsed >= 11.85 || !recorder.isRecording {
-                finishRecording()
-            }
         }
     }
 
@@ -174,7 +174,7 @@ struct PhrasePracticeView: View {
     private var footerButtons: some View {
         if phase == .result {
             HStack(spacing: 10) {
-                Button(action: startRecording) {
+                Button(action: requestMicAndRecord) {
                     Text("Try again").frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.voccoGhost)
@@ -219,6 +219,19 @@ struct PhrasePracticeView: View {
     }
 
     // MARK: Actions
+
+    /// Recording needs explicit mic permission — otherwise record() fails silently.
+    private func requestMicAndRecord() {
+        AVAudioApplication.requestRecordPermission { granted in
+            Task { @MainActor in
+                guard granted else {
+                    alertMessage = VoccoError.micDenied.errorDescription
+                    return
+                }
+                startRecording()
+            }
+        }
+    }
 
     private func startRecording() {
         player.stop()

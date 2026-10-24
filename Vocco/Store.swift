@@ -27,6 +27,9 @@ final class Store {
         if apiKey.isEmpty, let bundled = Self.bundledKey(), !bundled.isEmpty {
             Keychain.write(bundled)
             apiKey = bundled
+            print("[vocco] seeded key from bundle (\(bundled.count) chars)")
+        } else {
+            print("[vocco] api key: \(apiKey.isEmpty ? "MISSING" : "keychain \(apiKey.count)-char")")
         }
     }
 
@@ -266,5 +269,48 @@ final class Store {
             .sorted { $0.mastery < $1.mastery }
             .prefix(3)
             .map { $0 }
+    }
+
+    // MARK: Level (XP from attempts — deterministic, no migration needed)
+
+    /// +10 per attempt, +15 per strong take (≥85), +25 per mastered phrase.
+    var xp: Int {
+        attempts.count * 10
+            + attempts.filter { $0.score >= 85 }.count * 15
+            + masteredKeys.count * 25
+    }
+
+    var level: Int { Int((Double(xp) / 50.0).squareRoot()) + 1 }
+
+    private static func xpThreshold(_ level: Int) -> Int { 50 * (level - 1) * (level - 1) }
+
+    var levelProgress: Double {
+        let lowerBound = Self.xpThreshold(level)
+        let upperBound = Self.xpThreshold(level + 1)
+        guard upperBound > lowerBound else { return 1 }
+        return min(1, max(0, Double(xp - lowerBound) / Double(upperBound - lowerBound)))
+    }
+
+    var xpIntoLevel: Int { xp - Self.xpThreshold(level) }
+
+    var xpForNextLevel: Int { Self.xpThreshold(level + 1) - Self.xpThreshold(level) }
+
+    // MARK: Resume & saved
+
+    var lastPracticedDeck: Deck? {
+        guard let lastAttempt = attempts.last else { return nil }
+        return Store.decks.first { $0.id == lastAttempt.deckId }
+    }
+
+    /// First phrase of the deck without a strong take (≥85), so "Continue" resumes well.
+    func nextPhraseIndex(in deck: Deck) -> Int {
+        var best: [Int: Int] = [:]
+        for attempt in attempts where attempt.deckId == deck.id {
+            best[attempt.phraseIdx] = max(best[attempt.phraseIdx] ?? 0, attempt.score)
+        }
+        if let pending = deck.phrases.indices.first(where: { (best[$0] ?? 0) < 85 }) {
+            return pending
+        }
+        return 0
     }
 }
