@@ -12,9 +12,13 @@ word by word. Built on ElevenLabs TTS + Scribe STT, with all scoring done
 ![ElevenLabs](https://img.shields.io/badge/API-ElevenLabs-black)
 ![Cost](https://img.shields.io/badge/LLM%20usage-0%20tokens-brightgreen)
 
-| Design (OpenDesign) | Built (SwiftUI) |
+| Practice home | Phrase practice |
 |---|---|
-| ![Design mockup](screenshots/design-home.png) | ![Running app](screenshots/app-home.png) |
+| ![Practice home](screenshots/app-home.png) | ![Phrase practice](screenshots/app-practice.png) |
+
+| Progress | Settings |
+|---|---|
+| ![Progress](screenshots/app-progress.png) | ![Settings](screenshots/app-settings.png) |
 
 ## How it works
 
@@ -99,15 +103,7 @@ Warm ivory `#FAF6EF` · ink indigo `#1E2640` · signature coral `#FF5C49`
 (speaking actions only) · success teal `#17B8A6` · warning amber `#FFB020` ·
 coach lilac `#EFEBFF`. Rounded geometric type (SF Pro Rounded), monospaced
 IPA/timers, pill cards, waveform motifs — the dotted “o”s in the wordmark
-included. Screens were designed with [OpenDesign](https://open-design.ai)
-briefs and ported 1:1 to SwiftUI.
-
-## Cost
-
-- TTS (`eleven_flash_v2_5`): **0.5 credits/char** → a typical phrase ≈ 17 credits
-- STT (`scribe_v1`): billed per second, pennies per hour
-- Free tier (~10k credits/month) covers **hundreds of practice sessions**
-- Scoring, streaks, levels: **local Swift, zero API calls**
+included.
 
 ## Security notes
 

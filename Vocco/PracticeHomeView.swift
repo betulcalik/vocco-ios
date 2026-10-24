@@ -2,9 +2,10 @@ import SwiftUI
 
 struct PracticeHomeView: View {
     @Environment(Store.self) private var store
+    @State private var path: [Deck] = []
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ScrollView {
                 VStack(spacing: 20) {
                     HStack(spacing: 8) {
@@ -36,6 +37,13 @@ struct PracticeHomeView: View {
             }
             .background(Brand.bg.ignoresSafeArea())
             .toolbar(.hidden, for: .navigationBar)
+            .onAppear {
+                // Screenshot helper: `SIMCTL_CHILD_VOCCO_DECK=travel xcrun simctl launch …`
+                if path.isEmpty, let deckId = ProcessInfo.processInfo.environment["VOCCO_DECK"],
+                   let deck = Store.decks.first(where: { $0.id == deckId }) {
+                    path = [deck]
+                }
+            }
         }
     }
 

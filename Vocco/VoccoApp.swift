@@ -15,9 +15,18 @@ struct VoccoApp: App {
 
 struct RootTabView: View {
     @Environment(Store.self) private var store
-    @State private var tab: Tab = .practice
+    @State private var tab: Tab = RootTabView.initialTab()
 
     enum Tab: Hashable { case practice, progress, settings }
+
+    /// Screenshot helper: `SIMCTL_CHILD_VOCCO_TAB=progress xcrun simctl launch …`
+    static func initialTab() -> Tab {
+        switch ProcessInfo.processInfo.environment["VOCCO_TAB"] {
+        case "progress": return .progress
+        case "settings": return .settings
+        default: return .practice
+        }
+    }
 
     var body: some View {
         TabView(selection: $tab) {
