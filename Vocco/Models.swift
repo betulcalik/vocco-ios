@@ -43,7 +43,7 @@ struct VoiceInfo: Identifiable, Hashable {
         VoiceInfo(id: "EXAVITQu4vr4xnSDxMaL", name: "Aria",  desc: "warm · female"),
         VoiceInfo(id: "onwK4e9ZLuTAKqWW03F9", name: "Miles", desc: "deep · male"),
         VoiceInfo(id: "piTKgcLEGmPE4e6mEKli", name: "Priya", desc: "bright · female"),
-        VoiceInfo(id: "29VdS4M9cTIaSanyjjIR", name: "Theo",  desc: "calm · male"),
+        VoiceInfo(id: "JBFqnCBsd6RMkjVDRZzb", name: "Theo",  desc: "calm · male"),
     ]
 }
 
