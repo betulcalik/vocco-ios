@@ -1,0 +1,31 @@
+name: Vocco
+options:
+  bundleIdPrefix: com.vocco
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+targets:
+  Vocco:
+    type: application
+    platform: iOS
+    sources:
+      - Vocco
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: "YES"
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Vocco records your voice so it can score your pronunciation."
+        INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
+        SUPPORTS_MACCATALYST: "NO"
+schemes:
+  Vocco:
+    build:
+      targets:
+        Vocco: all
+    run:
+      config: Debug

@@ -1,0 +1,70 @@
+[
+  {
+    "id": "travel",
+    "title": "Travel Talk",
+    "emoji": "✈️",
+    "phrases": [
+      { "t": "I'd like to reserve a table for two.", "ipa": "/aɪd laɪk tə rɪˈzɜːrv ə ˈteɪbəl fər tuː/", "tr": "İki kişilik bir masa ayırtmak istiyorum.", "tip": "re-SERVE — land the beat on the second syllable." },
+      { "t": "Where can I pick up my boarding pass?", "ipa": "/wɛr kən aɪ pɪk ʌp maɪ ˈbɔːrdɪŋ pæs/", "tr": "Biniş kartımı nereden alabilirim?", "tip": "BOARDing — compound nouns stress the first part." },
+      { "t": "How long does the flight take?", "ipa": "/haʊ lɔːŋ dʌz ðə flaɪt teɪk/", "tr": "Uçuş ne kadar sürüyor?", "tip": "The GH in flight is silent — just say FLITE." },
+      { "t": "Could you drop me off at the main entrance?", "ipa": "/kʊd ju drɑːp mi ɔf æt ðə meɪn ˈɛntrəns/", "tr": "Ana girişte bırakabilir misiniz?", "tip": "Drop me OFF — the phrasal verb stress lands on off." },
+      { "t": "I have a reservation under the name Alex.", "ipa": "/aɪ hæv ə rɛzərˈveɪʃən ˈʌndər ðə neɪm ˈælɪks/", "tr": "Alex adına rezervasyonum var.", "tip": "reserVAtion — the third syllable carries the beat." },
+      { "t": "Is breakfast included?", "ipa": "/ɪz ˈbrɛkfəst ɪnˈkluːdɪd/", "tr": "Kahvaltı dahil mi?", "tip": "in-CLUDED — finish strong on the second word." },
+      { "t": "What time is check-out?", "ipa": "/wʌt taɪm ɪz tʃɛk aʊt/", "tr": "Çıkış saati kaçta?", "tip": "CHECK-out — first part of the compound wins." },
+      { "t": "I'd like a window seat, please.", "ipa": "/aɪd laɪk ə ˈwɪndoʊ sit pliz/", "tr": "Cam kenarı bir koltuk istiyorum, lütfen.", "tip": "A crisp W — don't let it round into a V." },
+      { "t": "Could you take our picture?", "ipa": "/kʊd ju teɪk aʊər ˈpɪktʃər/", "tr": "Fotoğrafımızı çekebilir misiniz?", "tip": "The T softens into CH — say PIK-chur." },
+      { "t": "Do you have a map of the city?", "ipa": "/du ju hæv ə mæp əv ðə ˈsɪti/", "tr": "Şehir haritası var mı?", "tip": "CITY — the T flaps like a quick D in American English." }
+    ]
+  },
+  {
+    "id": "business",
+    "title": "Business English",
+    "emoji": "💼",
+    "phrases": [
+      { "t": "Let's touch base early next week.", "ipa": "/lɛts tʌtʃ beɪs ˈɜːrli nɛkst wik/", "tr": "Gelecek hafta başında iletişime geçelim.", "tip": "Touch BASE — the phrasal verb lands on base." },
+      { "t": "I'll follow up by email.", "ipa": "/aɪl ˈfɑːloʊ ʌp baɪ ˈimeɪl/", "tr": "E-postayla dönüş yapacağım.", "tip": "FOL-low — keep the final L soft and light." },
+      { "t": "Could we schedule a call for tomorrow?", "ipa": "/kʊd wi ˈskɛdʒuːl ə kɔl fər təˈmɑːroʊ/", "tr": "Yarın için bir görüşme ayarlayabilir miyiz?", "tip": "toMORrow — the second syllable wins." },
+      { "t": "I'm afraid I have a conflict at that time.", "ipa": "/aɪm əˈfreɪd aɪ hæv ə ˈkɑːnflɪkt æt ðæt taɪm/", "tr": "O saatte bir çakışmam var, korkarım.", "tip": "aFRAID — start soft, land on the second syllable." },
+      { "t": "That works for me.", "ipa": "/ðæt wɜrks fər mi/", "tr": "Beni uygun.", "tip": "THAT opens with the voiced TH — tongue between teeth." },
+      { "t": "Let's circle back on this.", "ipa": "/lɛts ˈsɜːrkəl bæk ɑn ðɪs/", "tr": "Bu konuya daha sonra dönelim.", "tip": "CIR-cle — the R colors the whole first syllable." },
+      { "t": "I'll have the report ready by Friday.", "ipa": "/aɪl hæv ðə rɪˈpɔːrt ˈrɛdi baɪ ˈfraɪdeɪ/", "tr": "Raporu cumaya hazır ederim.", "tip": "It's a rePORT — not a REport." },
+      { "t": "Could you clarify the last point?", "ipa": "/kʊd ju ˈklɛrəfaɪ ðə læst pɔɪnt/", "tr": "Son maddeyi açıklığa kavuşturabilir misiniz?", "tip": "CLARE-ify — let the L flow through the cluster." },
+      { "t": "We're on a tight deadline.", "ipa": "/wɪr ɑn ə taɪt ˈdɛdlaɪn/", "tr": "Sıkışık bir teslim süremiz var.", "tip": "TIGHT ends in a crisp T — don't drop it." },
+      { "t": "Thanks for looping me in.", "ipa": "/θæŋks fər ˈluːpɪŋ mi ɪn/", "tr": "Beni bilgilendirdiğiniz için teşekkürler.", "tip": "THANKS — unvoiced TH, airy and light." }
+    ]
+  },
+  {
+    "id": "smalltalk",
+    "title": "Small Talk",
+    "emoji": "☕",
+    "phrases": [
+      { "t": "How's it going?", "ipa": "/haʊz ɪt ˈɡoʊɪŋ/", "tr": "Naber, nasılsın?", "tip": "GOing shrinks to a soft ginning — HOWZ-it-GUN." },
+      { "t": "What do you do for a living?", "ipa": "/wʌt du ju du fər ə ˈlɪvɪŋ/", "tr": "Ne iş yapıyorsun?", "tip": "The main DO carries the stress — what do you DO." },
+      { "t": "It was nice running into you.", "ipa": "/ɪt wəz naɪs ˈrʌnɪŋ ˈɪntu ju/", "tr": "Seni görmek güzeldi.", "tip": "RUNning — double N, bounce the syllables." },
+      { "t": "I can't complain.", "ipa": "/aɪ kænt kəmˈpleɪn/", "tr": "Şikayetim yok.", "tip": "CAN'T keeps its long A even when it's quick." },
+      { "t": "What have you been up to?", "ipa": "/wʌt hæv ju bɪn ʌp tu/", "tr": "Neler yapıyorsun?", "tip": "Been can say bin — the American way." },
+      { "t": "Let's grab a coffee sometime.", "ipa": "/lɛts ɡræb ə ˈkɔːfi ˈsʌmtaɪm/", "tr": "Bir ara kahve içelim.", "tip": "COFfee — the first syllable is the hot one." },
+      { "t": "That sounds like a plan.", "ipa": "/ðæt saʊndz laɪk ə plæn/", "tr": "Bu iyi bir plan gibi.", "tip": "SOUNDS — let the final DZ ring." },
+      { "t": "I'd better get going.", "ipa": "/aɪd ˈbɛtər ɡɛt ˈɡoʊɪŋ/", "tr": "Ben artık gitmeliyim.", "tip": "BET-ter — the middle T flaps like a D." },
+      { "t": "Say hi to your family for me.", "ipa": "/seɪ haɪ tu jər ˈfæməli fər mi/", "tr": "Ailene benden selam söyle.", "tip": "FAMily — three light beats, first one strongest." },
+      { "t": "It was great catching up.", "ipa": "/ɪt wəz ɡreɪt ˈkætʃɪŋ ʌp/", "tr": "Sohbet çok güzeldi.", "tip": "CATCHing — the T melts into a soft CH." }
+    ]
+  },
+  {
+    "id": "ielts",
+    "title": "IELTS Hard Words",
+    "emoji": "🎓",
+    "phrases": [
+      { "t": "Their schedule is completely full.", "ipa": "/ðɛr ˈskɛdʒuːl ɪz kəmˈplitli fʊl/", "tr": "Programları tamamen dolu.", "tip": "THEIR — keep the R soft at the end." },
+      { "t": "I received a thorough explanation.", "ipa": "/aɪ rɪˈsivd ə ˈθɜːroʊ ˌɛkspləˈneɪʃən/", "tr": "Kapsamlı bir açıklama aldım.", "tip": "THORough — airy TH, tongue between teeth." },
+      { "t": "The weather in February is unpredictable.", "ipa": "/ðə ˈwɛðər ɪn ˈfebruˌɛri ɪz ʌnprɪˈdɪktəbəl/", "tr": "Şubat ayının havası öngörülemez.", "tip": "FEB-ru-air-ee — all four beats, with the first R." },
+      { "t": "She's particularly interested in architecture.", "ipa": "/ʃiz pərˈtɪkjələrli ˈɪntərɛstɪd ɪn ˈɑːrkətɛktʃər/", "tr": "Özellikle mimarlığa ilgi duyuyor.", "tip": "parTICularly — find the TICK in the middle." },
+      { "t": "Colleagues and acquaintances attended.", "ipa": "/ˈkɑːliz ænd əˈkweɪntənsɪz əˈtɛndɪd/", "tr": "İş arkadaşları ve tanıdıklar katıldı.", "tip": "Colleague ends tight — KOL-eegz." },
+      { "t": "The development of vocabulary takes determination.", "ipa": "/ðə dɪˈvɛləpmənt əv voʊˈkæbjəˌleri teɪks dɪˌtɜːrmɪˈneɪʃən/", "tr": "Kelime dağarcığının gelişimi kararlılık ister.", "tip": "voCABulary — the CAB carries the beat." },
+      { "t": "Necessary equipment for the experiment.", "ipa": "/ˈnɛsəˌsɛri ɪˈkwɪpmənt fər ɪkˈspɛrəmənt/", "tr": "Deney için gerekli ekipman.", "tip": "ik-SPER-uh-ment — the second syllable explodes." },
+      { "t": "His pronunciation has improved considerably.", "ipa": "/hɪz prəˌnʌnsiˈeɪʃən hæz ɪmˈpruvd kənˈsɪdərəbli/", "tr": "Telaffuzu kayda değer şekilde gelişti.", "tip": "proNUNciation — the NUN pops." },
+      { "t": "They renovated the whole restaurant.", "ipa": "/ðeɪ ˈrɛnəveɪtɪd ðə hoʊl ˈrɛstrɑːnt/", "tr": "Restoranın tamamını yenilediler.", "tip": "RES-tuh-ront — three beats, first one strong." },
+      { "t": "Wednesday is the sixth of November.", "ipa": "/ˈwɛnzdeɪ ɪz ðə sɪkst əv noʊˈvɛmbər/", "tr": "Çarşamba günü 6 Kasım.", "tip": "Wednesday hides its first D — WENZ-day." }
+    ]
+  }
+]
