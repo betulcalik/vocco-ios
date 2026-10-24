@@ -126,13 +126,14 @@ struct PhrasePracticeView: View {
                     Text(idealLoading ? "Loading…" : "Hear it")
                 }
             }
-            .buttonStyle(.voccoPill)
+            .buttonStyle(PillButtonStyle(expands: false))
             .disabled(idealLoading)
-            Spacer()
+            Spacer(minLength: 8)
             HStack(spacing: 2) {
                 speedSegment(slow: true, icon: "tortoise.fill", label: "Slow")
                 speedSegment(slow: false, icon: "hare.fill", label: "Normal")
             }
+            .fixedSize()
             .padding(4)
             .background(Capsule().fill(Color.white))
             .shadow(color: Brand.fg.opacity(0.06), radius: 8, y: 3)
@@ -147,9 +148,10 @@ struct PhrasePracticeView: View {
                 Text(label).font(.vocco(13, .semibold))
             }
             .foregroundStyle(selected ? Brand.fg : Brand.muted)
-            .padding(.horizontal, 12)
+            .padding(.horizontal, 11)
             .padding(.vertical, 9)
             .background(Capsule().fill(selected ? Brand.lilac : Color.clear))
+            .fixedSize()
         }
         .buttonStyle(.plain)
         .accessibilityLabel("\(label) speed")
