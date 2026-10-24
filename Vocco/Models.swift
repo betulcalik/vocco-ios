@@ -63,7 +63,6 @@ struct Settings: Codable {
     var voiceId: String = VoiceInfo.all[0].id
     var dailyGoal: Int = 10
     var reminderOn: Bool = true
-    var apiKey: String = ""   // shortcut: plain file storage; move to Keychain before App Store
 }
 
 struct Persisted: Codable {

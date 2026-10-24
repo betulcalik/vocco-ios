@@ -15,11 +15,15 @@ final class Store {
     private(set) var bookmarks: Set<String>
     private let fileURL: URL
 
+    /// User's ElevenLabs key (BYOK) — lives only in the Keychain, never in the state file.
+    private(set) var apiKey: String
+
     init(settings: Settings, attempts: [Attempt], bookmarks: Set<String>, fileURL: URL) {
         self.settings = settings
         self.attempts = attempts
         self.bookmarks = bookmarks
         self.fileURL = fileURL
+        self.apiKey = Keychain.read() ?? ""
     }
 
     static func load() -> Store {
@@ -72,8 +76,13 @@ final class Store {
     }
 
     func setAPIKey(_ key: String) {
-        settings.apiKey = key.trimmingCharacters(in: .whitespacesAndNewlines)
-        persist()
+        let trimmed = key.trimmingCharacters(in: .whitespacesAndNewlines)
+        apiKey = trimmed
+        if trimmed.isEmpty {
+            Keychain.delete()
+        } else {
+            Keychain.write(trimmed)
+        }
     }
 
     // MARK: Reminder (daily 7 PM local)

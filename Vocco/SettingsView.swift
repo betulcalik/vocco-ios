@@ -29,7 +29,7 @@ struct SettingsView: View {
             .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
-            if keyInput.isEmpty { keyInput = store.settings.apiKey }
+            if keyInput.isEmpty { keyInput = store.apiKey }
         }
     }
 
@@ -99,13 +99,13 @@ struct SettingsView: View {
         let sample = "Hi, I'm \(voice.name). Let's practice your pronunciation."
         Task { @MainActor in
             defer { previewingVoiceId = nil }
-            if store.settings.apiKey.isEmpty {
+            if store.apiKey.isEmpty {
                 speakerFallback.say(sample, slow: false)
                 return
             }
             do {
                 if previewCache[voice.id] == nil {
-                    previewCache[voice.id] = try await ElevenLabs(apiKey: store.settings.apiKey)
+                    previewCache[voice.id] = try await ElevenLabs(apiKey: store.apiKey)
                         .tts(text: sample, voiceId: voice.id)
                 }
                 if let audioData = previewCache[voice.id] {
@@ -169,7 +169,7 @@ struct SettingsView: View {
     private var keyCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionLabel("ElevenLabs")
-            Text("Paste your API key for premium voices and instant scoring.")
+            Text("Vocco speaks through ElevenLabs — paste your personal API key. It is stored only in this device's Keychain.")
                 .font(.vocco(13.5))
                 .foregroundStyle(Brand.fg.opacity(0.7))
                 .fixedSize(horizontal: false, vertical: true)
@@ -186,11 +186,11 @@ struct SettingsView: View {
             .padding(12)
             .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Brand.bg))
             HStack(spacing: 6) {
-                Image(systemName: store.settings.apiKey.isEmpty ? "circle.dashed" : "checkmark.circle.fill")
-                    .foregroundStyle(store.settings.apiKey.isEmpty ? Brand.muted : Brand.teal)
-                Text(store.settings.apiKey.isEmpty
+                Image(systemName: store.apiKey.isEmpty ? "circle.dashed" : "checkmark.circle.fill")
+                    .foregroundStyle(store.apiKey.isEmpty ? Brand.muted : Brand.teal)
+                Text(store.apiKey.isEmpty
                      ? "Not set — using basic device voice"
-                     : "Connected — key stored on this device")
+                     : "Connected — stored safely in Keychain")
                     .font(.voccoMono(11.5))
                     .foregroundStyle(Brand.muted)
                 Spacer()

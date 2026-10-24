@@ -244,7 +244,7 @@ struct PhrasePracticeView: View {
     }
 
     private func scoreTake(at url: URL) {
-        guard !store.settings.apiKey.isEmpty else {
+        guard !store.apiKey.isEmpty else {
             alertMessage = VoccoError.noKey.errorDescription
             phase = .ready
             return
@@ -255,7 +255,7 @@ struct PhrasePracticeView: View {
         let index = phraseIndex
         Task { @MainActor in
             do {
-                let heard = try await ElevenLabs(apiKey: store.settings.apiKey).transcribe(file: url)
+                let heard = try await ElevenLabs(apiKey: store.apiKey).transcribe(file: url)
                 let outcome = Scorer.score(target: text, heard: heard)
                 result = outcome
                 store.record(Attempt(deckId: deckId, phraseIdx: index, score: outcome.score,
@@ -279,13 +279,13 @@ struct PhrasePracticeView: View {
         Task { @MainActor in
             defer { idealLoading = false }
             do {
-                if store.settings.apiKey.isEmpty {
+                if store.apiKey.isEmpty {
                     speaker.say(text, slow: useSlow)
                     return
                 }
                 let cacheKey = "\(text)|\(voiceId)"
                 if ttsCache[cacheKey] == nil {
-                    ttsCache[cacheKey] = try await ElevenLabs(apiKey: store.settings.apiKey)
+                    ttsCache[cacheKey] = try await ElevenLabs(apiKey: store.apiKey)
                         .tts(text: text, voiceId: voiceId)
                 }
                 if let audioData = ttsCache[cacheKey] {
