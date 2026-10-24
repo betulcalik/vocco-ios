@@ -24,6 +24,17 @@ final class Store {
         self.bookmarks = bookmarks
         self.fileURL = fileURL
         self.apiKey = Keychain.read() ?? ""
+        if apiKey.isEmpty, let bundled = Self.bundledKey(), !bundled.isEmpty {
+            Keychain.write(bundled)
+            apiKey = bundled
+        }
+    }
+
+    /// Dev-only seed: a git-ignored `Secret.key` bundled into personal builds.
+    private static func bundledKey() -> String? {
+        guard let url = Bundle.main.url(forResource: "Secret", withExtension: "key"),
+              let raw = try? String(contentsOf: url, encoding: .utf8) else { return nil }
+        return raw.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     static func load() -> Store {

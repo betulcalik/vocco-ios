@@ -3,3 +3,4 @@ DerivedData/
 !project.yml
 .DS_Store
 build/
+Vocco/Secret.key

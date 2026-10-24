@@ -3,7 +3,6 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(Store.self) private var store
 
-    @State private var keyInput = ""
     @State private var previewingVoiceId: String?
     @State private var previewCache: [String: Data] = [:]
 
@@ -20,16 +19,12 @@ struct SettingsView: View {
                     voiceCard
                     goalCard
                     reminderCard
-                    keyCard
                     aboutCard
                 }
                 .padding(20)
             }
             .background(Brand.bg.ignoresSafeArea())
             .toolbar(.hidden, for: .navigationBar)
-        }
-        .onAppear {
-            if keyInput.isEmpty { keyInput = store.apiKey }
         }
     }
 
@@ -160,44 +155,6 @@ struct SettingsView: View {
                                                       set: { store.setReminder($0) }))
                 .labelsHidden()
                 .tint(Brand.coral)
-        }
-        .vCard()
-    }
-
-    // MARK: ElevenLabs key
-
-    private var keyCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            SectionLabel("ElevenLabs")
-            Text("Vocco speaks through ElevenLabs — paste your personal API key. It is stored only in this device's Keychain.")
-                .font(.vocco(13.5))
-                .foregroundStyle(Brand.fg.opacity(0.7))
-                .fixedSize(horizontal: false, vertical: true)
-            HStack(spacing: 8) {
-                Image(systemName: "key.fill").foregroundStyle(Brand.muted)
-                SecureField("API key", text: $keyInput)
-                    .font(.voccoMono(13))
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .onChange(of: keyInput) { _, newValue in
-                        store.setAPIKey(newValue)
-                    }
-            }
-            .padding(12)
-            .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Brand.bg))
-            HStack(spacing: 6) {
-                Image(systemName: store.apiKey.isEmpty ? "circle.dashed" : "checkmark.circle.fill")
-                    .foregroundStyle(store.apiKey.isEmpty ? Brand.muted : Brand.teal)
-                Text(store.apiKey.isEmpty
-                     ? "Not set — using basic device voice"
-                     : "Connected — stored safely in Keychain")
-                    .font(.voccoMono(11.5))
-                    .foregroundStyle(Brand.muted)
-                Spacer()
-                Link("Free key: elevenlabs.io →", destination: URL(string: "https://elevenlabs.io")!)
-                    .font(.voccoMono(11.5, .semibold))
-                    .foregroundStyle(Brand.coral)
-            }
         }
         .vCard()
     }
